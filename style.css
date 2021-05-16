@@ -1,0 +1,239 @@
+@import 'https://fonts.googleapis.com/css?family=Lora:400,400i,700|Raleway:300,600,700,900';
+@import 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css';
+
+$spacing: 60vh;
+
+body{
+  font-family: 'Lora', sans-serif;
+}
+
+.cover{
+  background-image: url(assets/images/marta-moya-ljRnNh6VJDs-unsplash.jpg);
+  background-color: #424242;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+}
+
+.coverText{
+  padding-top: 15%;
+  padding-left: 20%;
+}
+
+h1, h4, h5, h6{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 35px;
+}
+h1{
+  font-size: 70px;
+  width: 65%;
+  top:50%;
+  left:50%;
+}
+h2{
+  font-size: 32px;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #424242;
+  text-align: center;
+  margin-bottom: 35px;
+}
+h3{
+  font-size: 21px;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ffffff8c;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+h4{
+  padding: 10px;
+  font-size: 16;
+  width: 65%;
+
+}
+p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #424242;
+  /*background-color: #fff;*/
+}
+
+section {
+  position: relative;
+}
+
+
+body {
+  background-color: ghostwhite;
+  margin: 0 auto;
+}
+
+
+section {
+  margin: 0;
+  padding: 0;
+}
+
+article {
+  padding: 0 1rem 60vh;
+  margin: 0 auto;
+  max-width: 60rem;
+}
+article p {
+  font-family: Georgia;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  min-height: 5vh;
+  margin: 0;
+  &:not(:last-of-type) {
+    margin-bottom: $spacing;
+}
+}
+  
+figure {
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  width: 100%;
+  justify-content: center;
+  top: 0;
+  z-index: -1;
+}
+
+
+@media screen and (min-width: 35rem) {
+  figure {
+    position: sticky;
+  }
+}
+
+.story-text{
+	margin:0 auto;
+	pointer-events:all;
+	max-width:90rem;
+	background-color:rgba(255, 255, 255, 0.95);
+	padding:5rem;
+	z-index:3;
+	border-top:4px solid #51c2b9;
+	border-bottom:4px solid #51c2b9;
+	font-family:'National 2 Web';
+	-webkit-box-shadow:0 3px 3px rgba(0,0,0,0.1);
+	box-shadow:0 3px 3px rgba(0,0,0,0.1);
+	width:90%
+}
+
+.story-graph{
+  margin:0 auto;
+  pointer-events:all;
+  max-width:90rem;
+  background-color:rgba(255, 255, 255, 0.95);
+  padding:5rem 5rem 0;
+  z-index:3;
+  border-top:4px solid #51c2b9;
+  border-bottom:4px solid #51c2b9;
+  -webkit-box-shadow:0 3px 3px rgba(0,0,0,0.1);
+  box-shadow:0 3px 3px rgba(0,0,0,0.1);
+  width:90%
+}
+
+.gap {
+	margin-top:700px;
+	margin-bottom: 350px;
+}
+
+.title{
+	position: relative;
+	margin-bottom: 100px;
+}
+
+.title:after{
+	content: '';
+	height: 5px;
+	width: 40px;
+	background-color: #62aa94;
+	position: absolute;
+	top: 81px;
+	left: calc(50% - 20px);
+}
+
+
+.details {
+  text-align: center;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+.footer{
+	background-color: #202020;
+	/*text-align: center;*/
+	padding: 60px 0;
+}
+.footer span{
+	color: #51c2b9;
+}
+.footer p{
+	font-size: 12px;
+	color: rgb(196, 196, 196，0.75);
+	margin-bottom: 0;
+	width: 100%;
+}
+.footer a{
+	color: #fff;
+}
+
+#team {
+  padding-bottom: 100px;
+}
+
+.girls {
+  display: flex;
+  flex-direction: row;
+}
+
+li{
+  display: inline-block;
+  width: 9rem;
+  margin: 2rem 4rem;
+  list-style-type: none;
+}
+
+.girl_image {
+  margin: 0 auto;
+  width: 12rem;
+  height: 12rem;
+  background-position: center center;
+  background-size: cover;
+}
+
+.girl_name {
+  font-family: Georgia;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.8;
+  min-height: 5vh;
+  margin: 0;
+}
+
+.role {
+  font-family: Georgia;
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.references p{
+  text-align: left;
+}

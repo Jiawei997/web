@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Green space accessibility of London</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+#fly {
+    display: block;
+    position: relative;
+    margin: 5px auto;
+    width: 20%;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    background: #7b7c7eda;
+}
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 19.5%;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+.map-overlay .map-overlay-inner {
+    background-color: rgba(255, 255, 255, 0.445);
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.096);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.map-overlay table {
+    border: none;
+    width: 100%;
+}
+
+.map-overlay h2 {
+    line-height: 24px;
+    display: block;
+    margin: 0 0 8px;
+}
+
+.map-overlay label {
+    font: 16px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    vertical-align: bottom;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+.map-overlay p.credit {
+   margin: 5px 0 0 0;
+   padding: 0;
+}
+.mapboxgl-popup {
+   max-width: 400px;
+   min-width: 180px;
+   font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+   padding: 0;
+   margin: 0,0,0,20px;
+}
+
+.mapboxgl-popup-tip-container {
+    width:0px;
+    height:0px;
+    margin:0 auto;
+    position:relative;
+  }
+
+.mapboxgl-popup-tip {
+    width:0;
+    height:0;
+    margin:0;
+    border-left:0 solid transparent;
+    border-right:0 solid transparent;
+    border-top:0 solid transparent;
+    box-shadow:none;}
+    </style>
+</head>
+<body>
+
+
+<div id='map'></div>
+<button id="fly">Explore</button>
+<div class='map-overlay top'>
+    <div class='map-overlay-inner'>
+        <h2>Green Space Accessibility</h2>
+		<table><tr><td>
+  		<input type="radio" name="layers" id="layer1" value="accessibil" checked><label>Access to greenary&nbsp; &nbsp;</label><br />
+        <input type="radio" name="layers" id="layer2" value="rating"><label>Self-rated health </label><br />
+         </td>
+         </tr>
+
+
+         </table>
+         <!-- <p class="credit">Source: <a href="https://www.kaggle.com/harlfoxem/housesalesprediction">the Gallup World Poll</a>. </p> -->
+</div>
+</div>
+
+
+
+
+    <script>
+
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiamlhd2VpOTk3IiwiYSI6ImNrbTNzM2g2cDJrejAycG82djZxYmhtcTgifQ.P96lQniyFLTpLRcy5BK_MQ'; 
+    var start = [-3.199,53.690];
+    var end = [-0.029,51.492];
+    // Load a new map in the 'map' HTML div
+    var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/jiawei997/ckofxdtcl0zh517o1h8pqcihp', // map background layer location
+    center: start, // starting position [lng, lat]
+    zoom: 4.9, // starting zoom
+    pitch: 10, // tilt of the viewpoint in degrees
+    // maxZoom: 15,
+    // minZoom: 9
+    });
+
+    var isAtStart = true;
+ 
+    document.getElementById('fly').addEventListener('click', function () {
+    // depending on whether we're currently at point a or b, aim for
+    // point a or b
+    var target = isAtStart ? end : start;
+    
+    // and now we're at the opposite point
+    isAtStart = !isAtStart;
+    
+    map.flyTo({
+    // These options control the ending camera position: centered at
+    // the target, at zoom level 9, and north up.
+    center: target,
+    zoom: 9,
+    bearing: 0,
+    
+    // These options control the flight curve, making it move
+    // slowly and zoom out almost completely before starting
+    // to pan.
+    speed: 1.3, // make the flying slow
+    curve: 1, // change the speed at which it zooms out
+    
+    // This can be any easing function: it takes a number between
+    // 0 and 1 and returns another number between 0 and 1.
+    easing: function (t) {
+    return t;
+    },
+    
+    // this animation is considered essential with respect to prefers-reduced-motion
+    essential: true
+    });
+    });
+
+
+
+
+    map.scrollZoom.disable();
+    map.scrollZoom.setWheelZoomRate(0.02); // Default 1/450
+
+    map.on("wheel", event => {
+    if (event.originalEvent.ctrlKey) { // Check if CTRL key is pressed
+        event.originalEvent.preventDefault(); // Prevent chrome/firefox default behavior
+        if (!map.scrollZoom._enabled) map.scrollZoom.enable(); // Enable zoom only if it's disabled
+    } else {
+        if (map.scrollZoom._enabled) map.scrollZoom.disable(); // Disable zoom only if it's enabled
+    }
+    });
+
+    map.on('load', function() {
+      map.addControl(new mapboxgl.NavigationControl());
+      map.addLayer({
+        id: 'accessibil',
+        type: 'fill',
+        source: {
+          type: 'vector',
+          url: 'mapbox://jiawei997.10yotowc' 
+        },
+        'source-layer': 'accessibility_health-bu8nmw', //name of dataset in teilset
+        paint: {
+            
+            'fill-color': [
+                'interpolate',
+                 ['linear'],
+                 ['get', 'accessibil'],
+                    791.71, '#1f653b',
+                    10677.78, '#f9fbf9'
+        ],             
+            
+            'fill-opacity': 0.7,
+            'fill-opacity-transition': {  
+                 duration: 500,
+                 delay: 0
+             }
+            }
+      }      ,
+    'waterway-label', 'admin-0-admin-1-boundary-bg','admin-0-boundary');
+
+
+      map.addLayer({
+        id: 'rating',
+        type: 'fill',
+        source: {
+          type: 'vector',
+          url: 'mapbox://jiawei997.10yotowc' 
+        },
+        'source-layer': 'accessibility_health-bu8nmw', //name of dataset in teilset
+        paint: {
+            
+            'fill-color': [
+                'interpolate',
+                 ['linear'],
+                 ['get', 'rating'],
+                    4.03, '#fbf8f8',
+                    4.56, '#2c7da5'
+        ],             
+            
+            'fill-opacity': 0,
+            'fill-opacity-transition': {  
+                 duration: 500,
+                 delay: 0
+             }
+            }
+      }      ,
+      'waterway-label', 'admin-0-admin-1-boundary-bg','admin-0-boundary');
+
+ 
+
+var mypopup = new mapboxgl.Popup({offset:[150,50],closeButton: false});
+map.on('mousemove', 'accessibil', function (e) {
+    mypopup
+.setLngLat(e.lngLat)
+.setHTML("<h3>" + e.features[0].properties.NAME + "</h3>Accessibility:  " + 
+                        e.features[0].properties.accessibil.toFixed(3) + "<br />Health Index:  " + e.features[0].properties.rating )
+
+.addTo(map);
+});
+ 
+
+map.on('mouseenter', 'accessibil', function () {
+map.getCanvas().style.cursor = 'pointer';
+});
+ 
+
+map.on('mouseleave', 'accessibil', function () {
+map.getCanvas().style.cursor = '';
+mypopup.remove();
+});
+
+
+    });
+
+//Event listener for layer switch
+document.getElementById("layer1").addEventListener("click", function(){
+map.setPaintProperty('accessibil','fill-opacity',0.7);
+map.setPaintProperty('rating','fill-opacity',0);
+});
+
+document.getElementById("layer2").addEventListener("click", function(){
+map.setPaintProperty('accessibil','fill-opacity',0);
+map.setPaintProperty('rating','fill-opacity',0.7);
+});
+
+
+</script>
+
+</body>
+</html>

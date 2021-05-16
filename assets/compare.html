@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>Swipe between maps</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+  <style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+ </style>
+</head>
+ 
+ <body>
+ <style>
+ body {
+  overflow: hidden;}
+
+ body * {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+ .map {
+position: absolute;
+top: 0;
+bottom: 0;
+width: 100%;
+}
+.mapboxgl-compare:before {
+    content: 'Greenery accessibility';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-family: 'National 2 Web';
+    text-align: right;
+    font-weight: 600;
+    -webkit-transform: translate(-100%,calc(-50% - 70px));
+    -ms-transform: translate(-100%,calc(-50% - 70px));
+    transform: translate(-100%,calc(-50% - 70px));
+    background: #4c5050b0;
+    color: #fff;
+    width: 150px;
+    pointer-events: all;
+    padding: .5rem .5rem;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.mapboxgl-compare:after {
+    content: 'Self-rated health';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-family: 'National 2 Web';
+    font-weight: 600;
+    background: #f1f1f1dc;
+    color: rgba(39, 37, 37, 0.774);
+    width: 150px;
+    height: 46px;
+    pointer-events: all;
+    padding: .5rem .3rem;
+    
+    -webkit-transform: translate(4px,calc(-50% - 70px));
+    -ms-transform: translate(4px,calc(-50% - 70px));
+    transform: translate(1px,calc(-50% - 70px));
+     
+    text-align: left;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+}
+
+</style>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+ <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
+ <div id="comparison-container">
+ <div id="before" class="map"></div>
+ <div id="after" class="map"></div>
+ </div>
+
+ <script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoicWluZ2hvbmctY3VpIiwiYSI6ImNraHE4OWo0bjBxeGYyc3A1dHFvNnNremsifQ.JuRkCi8PgJXON94oVfpuVg';
+var beforeMap = new mapboxgl.Map({
+container: 'before',
+style: 'mapbox://styles/qinghong-cui/ckoeaj5v31l5m18qnn2cuj53r',
+center: [-0.1257, 51.5085],
+zoom: 9.5,
+// maxZoom: 15,
+// minZoom: 9.5
+});
+
+var afterMap = new mapboxgl.Map({
+container: 'after',
+style: 'mapbox://styles/qinghong-cui/ckoeaos0i3rug17qnwttmo5ax',
+center: [-0.1257, 51.5085],
+zoom: 9.5,
+// maxZoom: 15,
+// minZoom: 9.5
+});
+
+beforeMap.scrollZoom.disable();
+beforeMap.scrollZoom.setWheelZoomRate(0.02); // Default 1/450
+
+beforeMap.on("wheel", event => {
+    if (event.originalEvent.ctrlKey) { // Check if CTRL key is pressed
+        event.originalEvent.preventDefault(); // Prevent chrome/firefox default behavior
+        if (!beforeMap.scrollZoom._enabled) beforeMap.scrollZoom.enable(); // Enable zoom only if it's disabled
+    } else {
+        if (beforeMap.scrollZoom._enabled) beforeMap.scrollZoom.disable(); // Disable zoom only if it's enabled
+    }
+});
+
+afterMap.scrollZoom.disable();
+afterMap.scrollZoom.setWheelZoomRate(0.02); // Default 1/450
+
+afterMap.on("wheel", event => {
+    if (event.originalEvent.ctrlKey) { // Check if CTRL key is pressed
+        event.originalEvent.preventDefault(); // Prevent chrome/firefox default behavior
+        if (!afterMap.scrollZoom._enabled) afterMap.scrollZoom.enable(); // Enable zoom only if it's disabled
+    } else {
+        if (afterMap.scrollZoom._enabled) afterMap.scrollZoom.disable(); // Disable zoom only if it's enabled
+    }
+});
+
+// A selector or reference to HTML element
+var container = '#comparison-container';
+
+var map = new mapboxgl.Compare(beforeMap, afterMap, container, {
+// Set this to enable comparing two maps by mouse movement:
+// mousemove: true
+});
+</script>
+
+</body>
+</html>

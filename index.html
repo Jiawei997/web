@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <head>
+
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body>
+
+<div class="cover" style="height: 880px;">
+  
+  <div class="coverText"> 
+    <h1>London green space accessibility</h1> 
+    <br>
+    <br>
+    <h4>A study on relation between green space accessibility <br>and self-rated health</h4>
+  </div>
+</div>
+
+
+<section>
+	
+  <figure style="background-color: #f8f8f8;"></figure>
+
+  <article style="color: #efefef;">	
+    <div class='story-text'>
+    <!-- <h3>Introduction</h3> -->
+    	<p>As the world's population grows and more people reside in urban areas, urbanisation is expected to double in the next three decades. Consequently, the urban population’s stress level is predicted to increase. This ignites concern from scientists and policy makers about the potential effects on the quality of human life for city dwellers. Studies have found that access to urban greenery is a way to alleviate urban stress and improve mental health. Numerous research has been done to study the benefits that green space can provide for mental health: A study done on individuals in London examined the effect of urban green space density on their self-reported mental health, which showed that there is a positive relationship between both variables. </p>
+    </div>
+  </article>
+</section>
+
+
+<section>
+  
+	<figure>
+		<img style= "width: 100%;height: 100%;" src="assets/images/marco-chilese-CBt9c8kTF-I-unsplash.jpg" alt="Hyde Park"  >
+	</figure>
+  
+	<article class='story'>
+
+    <div class='story-text'>
+    <!-- <h3>London</h3> -->
+    	<p>London, with over 3,000 parks of varying sizes covering 18% of the city, is one of the greenest cities in the world. This provides city dwellers with a network of green space which provide benefits to those who have access to them. One of the many benefits is the positive effect it has on the mental health of the residents. Mental health costs London 17billion pounds a year. According to a study done for the Greater London Authority, the benefits of public green spaces are estimated to save 370 million pounds a year in mental health costs. However, these cost savings vary between different Lower Super Output Areas of Greater London as green space density and socio-economic factors differ.</p>
+	</div>
+
+  	<div class='gap'>
+		<div class='story-text'>
+			<p>The aim of this study is to investigate the relationship between access to green space and self-rated mental health based on the 2011 Census data obtained from the UK Data Service. Mapping and identifying areas with low access to green spaces will help inform future planning and management of the need to implement greening initiatives.</p>
+		</div>
+	</div>
+
+</article>
+  
+</section>
+
+	<!-- 3 -->
+  <section class='story'>
+	
+	<figure style="background-color: #f8f8f8;">
+		<iframe src="assets/map1.html" width="100%" height="700" frameborder="0" ></iframe>
+	</figure>
+	
+	<article style="color: #efefef;">
+
+	  <div class='story-text'>	    
+	  <p>To evaluate green space accessibility for each London ward, the mean shortest network distance was calculated from each centroid to all greeneries. The average distance from origins to all destinations will represent the accessibility for that residential area to all greeneries.</p>
+	  </div>
+
+	  <div class='gap'>
+		<div class='story-text'>
+		<p>Overall, inner London has higher accessibility to greeneries, outer London except for Kingston upon Thames, Merton and Sutton have lower accessibility to greeneries.</p>
+		</div>
+	  </div>
+	</article>
+  </section>
+  
+  
+  <!-- 4 -->
+  <section class='story'>
+	
+	<figure>
+		<iframe src="assets/map2.html" width="100%" height="700" frameborder="0" ></iframe>
+	</figure>
+  
+	<article style="color: #efefef;">
+	  <div class='story-text'>	    
+	  <p>The self-rated health data is obtained from the UK Data Service’s 2011 Census Data. The results are categorical, varying from very good, good, fair, bad, or very bad.</p>
+	  </div>
+
+	</article>
+  </section>
+
+
+<!-- 4 -->
+<section class="story">
+	<br><br><br>
+	<h2 class="title">Swipe the map below!</h2>
+		<p class="details">
+			Look at the distribution of green space accessibility and self-rated mental health and try to say if there is a significant relationship!
+		</p>
+	<br><br><br>
+    <iframe src="assets/compare.html" width="100%" height="700" frameborder="0" ></iframe>
+
+</section>
+
+<section>
+ 	<figure>
+		<img style= "width: 100%;height: 100%;" src="assets/images/amadeusz-misiak-oXQT32eAMGE-unsplash.jpg" alt="Hampstead Heath"  >
+	</figure>
+  
+	<article class='story'>
+
+   <!-- <h3>Regression</h3> -->
+      <div class='gap'>
+		<div class='story-text'>
+			<p>In order to answer the research question and study the relationship between accessibility to green spaces and self-assessed mental health, a linear regression analysis is conducted with the formula <i>y = mx + c</i>. Self-assessed mental health is taken as the independent variable (y), and the accessibility to green space is taken as the dependent variable (x). Since other socio-economic factors such as income, employment rate and crime rate may also have an effect on the self-assessed mental health, they were also considered into the regression in order to assess their impact. For the research question to stand true, there needs to be a significant relationship between the variables, which is determined by the r2 value.</p>
+		</div>
+	  </div>
+
+	  <div class='gap'>
+	  	<div class='story-graph'>
+		<p>A histogram is used in order to understand the variable distribution. To ensure that the distribution is considered normal, the skewness is required to be between 2 and -2. However, if the skewness of the dataset is beyond that range, it is necessary to conduct a log transformation. Since the accessibility to green spaces variable distribution was out of the range considered normal, it is necessary to log transform the variables for a more normal distribution and hence a more accurate regression.</p>
+		<br>
+		<iframe src="assets/hist_web/index.html" width="100%" height="500" frameborder="0" ></iframe>
+		</div>
+		</div>
+
+	
+	  <!-- <h3>Scatter Plot</h3> -->
+	  <div class='gap'>
+		<div class='story-graph'>
+		<p>A scatter plot is used to display a relationship between the variables. This will help to identify any linear relationships and aid in visualizing the dataset.</p>
+		<br>
+		<iframe src="assets/scatterplot/index.html" width="100%" height="500" frameborder="0" ></iframe>
+		</div>
+	  </div>
+
+	  <div class='gap'>
+	  	<div class='story-text'>
+			<p>The results obtained from the regression prove that there is a correlation between self rated health and access to green space. In fact, access to green space appears to explain 53% of the variation in self-rated health. The p-values are less than the significance threshold of 0.05, which further proves that there is a genuine relationship.</p>
+		</div>
+	  </div>
+  </article>
+  
+</section>
+ 
+
+<section class="story">
+	<br><br><br>
+	<h2 class="title">Finally!</h2>
+		<p class="details">
+			Find your neighbourhood and say how accessible is greenery in your area! <br> Press Ctrl/Cmd to control the zoom level.
+		</p>
+	<br><br><br>
+    <iframe src="assets/compare_map.html" width="100%" height="700" frameborder="0" ></iframe>
+</section>
+
+
+<section id="team">
+
+	<h2>Team</h2>
+
+	<ul class="girls"></ul>
+	<li>
+		<div class="girl_image" style="background-image:url(assets/images/team/anna.jpeg)"></div>
+		<p class="girl_name">Anna Lvova</p>
+		<p class="role">Accessibility, web development</p>
+	</li>
+	
+	<li>
+		<div class="girl_image" style="background-image:url(assets/images/team/jiawei.png)"></div>
+		<p class="girl_name">Jiawei Zhang</p>
+		<p class="role">Accessibility, interactive maps</p>
+	</li>
+
+	<li>
+		<div class="girl_image" style="background-image:url(assets/images/team/lara.png)"></div>
+		<p class="girl_name">Lara Baitarian</p>
+		<p class="role">Regression, interactive graphs</p>
+	</li>
+
+	<li>
+		<div class="girl_image" style="background-image:url(assets/images/team/qinghong.jpeg)"></div>
+		<p class="girl_name">Qinghong Cui</p>
+		<p class="role">Interactive maps, literature</p>
+	</li>
+
+	<li>
+		<div class="girl_image" style="background-image:url(assets/images/team/sihan.jpeg)"></div>
+		<p class="girl_name">Sihan Chen</p>
+		<p class="role">Web design and development</p>
+	</li>
+
+</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Reference</h3>
+					<p>
+						Seto, K.C., Güneralp, B. and Hutyra, L.R., 2012. Global forecasts of urban expansion to 2030 and direct impacts on biodiversity and carbon pools. Proceedings of the National Academy of Sciences, 109(40), pp.16083-16088.
+						<br />
+						Peen, J., Schoevers, R.A., Beekman, A.T. and Dekker, J., 2010. The current status of urban‐rural differences in psychiatric disorders. Acta Psychiatrica Scandinavica, 121(2), pp.84-93.
+						<br />
+						Economics, V., 2018. Natural capital accounts for public green space in London: methodology document.
+						<br />
+						White, M. P., Alcock, I., Wheeler, B. W., & Depledge, M. H. (2013) Would you be happier living in a greener urban area? A fixed-effects analysis of panel data. Psychological Science, 24(6), 920–8. https://doi.org/10.1177/0956797612464659
+						<br />
+						self-rated health: https://census.ukdataservice.ac.uk/
+						<br />
+						openstreetmap: https://www.openstreetmap.org/#map=5/54.910/-3.432
+						<br />
+						other variables： https://www.ons.gov.uk/
+						
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+    
+  
+  
+</body>
+</html>
